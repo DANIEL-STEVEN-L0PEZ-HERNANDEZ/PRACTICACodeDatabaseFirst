@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using PROYECTO2025._APPMVCCodeFirst.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ESFEDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
+});
+
 
 var app = builder.Build();
 
